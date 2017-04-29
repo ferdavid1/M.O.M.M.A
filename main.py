@@ -1,4 +1,7 @@
-from cmr import GranuleQuery
+try:
+	from cmr import GranuleQuery
+except ImportError:
+	from python_cmr.cmr import GranuleQuery
 
 api = GranuleQuery()
 
