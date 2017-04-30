@@ -92,14 +92,26 @@ for index in columns[10:12]:
 		#print(event)
 		for i,l in enumerate(lats):
 			xpt,ypt = m(lons[i],lats[i])
+<<<<<<< HEAD
+			z=10000000
+			rect=Rectangle([xpt-z/2,ypt-z/2],width=z,height=z, facecolor='black',zorder=5)
+=======
 			z = 1357940
 			rect=Rectangle([xpt-z,ypt-z],width=z,height=z)
+>>>>>>> 300b6183e3d77421cda6a89288f7460771c1d6e4
 			cont,x=rect.contains(event)
+			ax.add_patch(rect)
 			#print rect
 			if cont:
+<<<<<<< HEAD
+				print('you touching a point nigga')
+		        #print ("over %s" % point.get_gid())
+			#rect.remove()
+=======
 				return 1
 			else:
 				return 0
+>>>>>>> 300b6183e3d77421cda6a89288f7460771c1d6e4
 
 	fig.canvas.mpl_connect('motion_notify_event', hover) 
 
