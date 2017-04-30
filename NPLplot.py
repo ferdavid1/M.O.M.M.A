@@ -59,15 +59,16 @@ for shape_dict in m.states_info:
 # get Texas and draw the filled polygon
 for state in states_names:
 	stateD= [x for x in stateDens if x[0] == state]
-	stateD=stateD[0]
-	seg = m.states[states_names.index(state)]
-	poly = Polygon(seg, facecolor=str(stateD[-1]))
-	ax.add_patch(poly)
+	if stateD:
+		stateD=stateD[0]
+		seg = m.states[states_names.index(state)]
+		poly = Polygon(seg, facecolor=str(1-stateD[-1]),zorder=0)
+		ax.add_patch(poly)
 
 
 lats=[i[0] for i in data]
 lons=[i[1] for i in data]
 
 #CS = m.hexbin(lats,lons,latlon=True,C=z,gridsize=bins,cmap=plt.cm.jet)
-m.scatter(lons,lats,latlon=True)
+m.scatter(lons,lats,latlon=True,zorder=2,s=1, color="red")
 plt.show()
