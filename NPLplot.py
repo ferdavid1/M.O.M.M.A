@@ -7,10 +7,10 @@ import pandas as pd
 import re
 from matplotlib.patches import Polygon
 
-columns = [0,10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
+columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
 ind = 0
 for index in columns[3:13]:
-	data = pd.read_csv('dataSets/pop_density.csv', usecols=columns)
+	data = pd.read_csv('dataSets/pop_density.csv', usecols=[0,index])
 
 	data = data.get_values()
 	data = [list(d) for d in data]
@@ -55,7 +55,7 @@ for index in columns[3:13]:
 	cm= plt.get_cmap('YlOrBr')
 	ax = plt.gca() # get current axes instance
 	states_names = []
-	dens=[x[index] for x in stateDens]
+	dens=[x[1] for x in stateDens]
 	dens=[x.replace(',','') for x in dens]
 	dens=[float(x) for x in dens]
 	color=[x/max(dens) for x in dens]
@@ -76,8 +76,5 @@ for index in columns[3:13]:
 
 	lats=[i[0] for i in data]
 	lons=[i[1] for i in data]
-
-	#CS = m.hexbin(lats,lons,latlon=True,C=z,gridsize=bins,cmap=plt.cm.jet)
 	m.scatter(lons,lats,latlon=True,zorder=2,s=1, color="black")
 	ind += 10
-	#plt.savefig(str(1900 + ind) + '.png')
