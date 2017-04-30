@@ -88,12 +88,14 @@ for index in columns[10:12]:
 		#print(event)
 		for i,l in enumerate(lats):
 			xpt,ypt = m(lons[i],lats[i])
-			rect=Rectangle([xpt-500000,ypt-500000],width=50000,height=500000)
+			z = 1357940
+			rect=Rectangle([xpt-z,ypt-z],width=z,height=z)
 			cont,x=rect.contains(event)
 			#print rect
 			if cont:
-				print('you touching a point nigga')
-		        #print ("over %s" % point.get_gid())
+				return 1
+			else:
+				return 0
 
 	fig.canvas.mpl_connect('motion_notify_event', hover) 
 
