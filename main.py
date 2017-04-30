@@ -10,7 +10,7 @@ for i in range(4):
         gid=i)
 
 def on_plot_hover(event):
-	print(plot.get_position()[0])
+	print(plot.get_position())
 	for curve in plot.get_lines():
 		print(curve)
 		if curve.contains(event)[0]:
