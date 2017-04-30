@@ -11,7 +11,11 @@ from matplotlib.patches import Polygon,Rectangle
 columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
 ind = 80
 
+<<<<<<< HEAD
 #tts = talkey.Talkey()
+=======
+tts = talkey.Talkey()
+>>>>>>> 883473a3dbeae1f9653c2002e07e0a047f7d4ba6
 # tts.say('You will be presented with a map of US population density, superimposed on a measure of how many environmental risks a state has, as determined by the EPA')
 # tts.say('The darkest states have the most environmental risks')
 # tts.say('The LED on your Pi will turn on more often in higher population density areas')
@@ -92,8 +96,13 @@ for index in columns[10:12]:
 		#print(event)
 		for i,l in enumerate(lats):
 			xpt,ypt = m(lons[i],lats[i])
+<<<<<<< HEAD
 			z = float(1357940)
 			rect=Rectangle([float(xpt)-z,float(ypt)-z],width=z,height=z)
+=======
+			z = 1357940
+			rect=Rectangle([xpt-z,ypt-z],width=z,height=z)
+>>>>>>> 883473a3dbeae1f9653c2002e07e0a047f7d4ba6
 			cont,x=rect.contains(event)
 			ax.add_patch(rect)
 			#print rect
