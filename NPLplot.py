@@ -8,10 +8,10 @@ import re
 from matplotlib.patches import Polygon
 
 columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
-ind = 10
+ind = 80
 
 
-for index in columns[3:13]:
+for index in columns[10:12]:
 	data = pd.read_csv('dataSets/pop_density.csv', usecols=[0,index])
 
 	data = data.get_values()
@@ -81,5 +81,16 @@ for index in columns[3:13]:
 	lons=[i[1] for i in NPL]
 	m.scatter(lons,lats,latlon=True,zorder=2,s=1, color="black")
 	print(ind)
+
+	#print(lats, lons)
+	def hover(event):
+		print(ax.get_position())
+		position = ax.get_position()
+		if position.contains(event)[0]:
+			print('you touching a point nigga')
+		        #print ("over %s" % point.get_gid())
+
+	fig.canvas.mpl_connect('motion_notify_event', hover) 
+
 	plt.show()
 	ind += 10

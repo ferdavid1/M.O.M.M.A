@@ -1,10 +1,20 @@
-try:
-	from cmr import GranuleQuery
-except ImportError:
-	from python_cmr.cmr import GranuleQuery
+import matplotlib.pyplot as plt
 
-api = GranuleQuery()
+fig = plt.figure()
+plot = fig.add_subplot(111)
 
-granules = api.short_name("AST_L1T").point(42.5, 75.5).query()
+# create some curves
+for i in range(4):
+    plot.plot(
+        [i*1,i*2,i*3,i*4],
+        gid=i)
 
-print(granules[0])
+def on_plot_hover(event):
+	print(plot.get_position()[0])
+	for curve in plot.get_lines():
+		print(curve)
+		if curve.contains(event)[0]:
+			print ("over %s" % curve.get_gid())
+
+fig.canvas.mpl_connect('motion_notify_event', on_plot_hover)           
+plt.show()
