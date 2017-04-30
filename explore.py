@@ -12,3 +12,4 @@ print(States[3])
 print(US_general)
 
 print([d for d in data if d[0] == 'Arkansas']) #example of how to index by name.
+
