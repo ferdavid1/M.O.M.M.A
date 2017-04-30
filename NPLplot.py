@@ -11,6 +11,7 @@ import talkey
 columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
 ind = 80
 
+tts = talkey.Talkey()
 tts.say('You will be presented with a map of US population density, superimposed on a measure of how many environmental risks a state has, as determined by the EPA')
 tts.say('The darkest states have the most environmental risks')
 tts.say('The LED on your Pi will turn on more often in higher population density areas')
@@ -25,7 +26,6 @@ for index in columns[10:12]:
 	stateDens = data[4:len(data)]
 	fig = plt.figure()
 
-	tts = talkey.Talkey()
 	states_names=['Washington', 'Wisconsin', 'West Virginia', 'Florida', 'Wyoming', 'New Hampshire', 'New Jersey', 'New Mexico', 'National', 'North Carolina', 'North Dakota', 'Nebraska', 'New York', 'Rhode Island', 'Nevada', 'Guam', 'Colorado', 'California', 'Georgia', 'Connecticut', 'Oklahoma', 'Ohio', 'Kansas', 'South Carolina', 'Kentucky', 'Oregon', 'South Dakota', 'Delaware', 'District of Columbia', 'Hawaii', 'Puerto Rico', 'Texas', 'Louisiana', 'Tennessee', 'Pennsylvania', 'Virginia', 'Virgin Islands', 'Alaska', 'Alabama', 'American Samoa', 'Arkansas', 'Vermont', 'Illinois', 'Indiana', 'Iowa', 'Arizona', 'Idaho', 'Maine', 'Maryland', 'Massachusetts', 'Utah', 'Missouri', 'Minnesota', 'Michigan', 'Montana', 'Northern Mariana Islands', 'Mississippi']
 	NPL = pd.read_csv('dataSets/NPL.csv', usecols=[1,2,3]).get_values()
 
