@@ -21,8 +21,16 @@ for index in columns[3:13]:
 
 
 	states_names=['Washington', 'Wisconsin', 'West Virginia', 'Florida', 'Wyoming', 'New Hampshire', 'New Jersey', 'New Mexico', 'National', 'North Carolina', 'North Dakota', 'Nebraska', 'New York', 'Rhode Island', 'Nevada', 'Guam', 'Colorado', 'California', 'Georgia', 'Connecticut', 'Oklahoma', 'Ohio', 'Kansas', 'South Carolina', 'Kentucky', 'Oregon', 'South Dakota', 'Delaware', 'District of Columbia', 'Hawaii', 'Puerto Rico', 'Texas', 'Louisiana', 'Tennessee', 'Pennsylvania', 'Virginia', 'Virgin Islands', 'Alaska', 'Alabama', 'American Samoa', 'Arkansas', 'Vermont', 'Illinois', 'Indiana', 'Iowa', 'Arizona', 'Idaho', 'Maine', 'Maryland', 'Massachusetts', 'Utah', 'Missouri', 'Minnesota', 'Michigan', 'Montana', 'Northern Mariana Islands', 'Mississippi']
-	data = pd.read_csv('dataSets/NPL.csv', usecols=[2,3]).get_values()
+	data = pd.read_csv('dataSets/NPL.csv', usecols=[1,2,3]).get_values()
 
+	#Sorts EPA Sites data to be only before population density year
+	for a,b in enumerate(data):
+		if int(b[0][-2:])>17:
+			b[0]=int(b[0][-2:])
+		else:
+			b[0]=100+int(b[0][-2:])
+		data[a]=b
+	data=[x[1:2] for x in data if x[0]<=ind]
 
 	fig = plt.figure()
 
@@ -71,6 +79,5 @@ for index in columns[3:13]:
 
 	#CS = m.hexbin(lats,lons,latlon=True,C=z,gridsize=bins,cmap=plt.cm.jet)
 	m.scatter(lons,lats,latlon=True,zorder=2,s=1, color="black")
-	#plt.show()
 	ind += 10
-	plt.savefig(str(1900 + ind) + '.png')
+	#plt.savefig(str(1900 + ind) + '.png')
