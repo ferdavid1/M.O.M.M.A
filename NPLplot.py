@@ -9,9 +9,8 @@ from matplotlib.patches import Polygon
 
 columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
 ind = 10
-fig = plt.figure()
-plt.ion()
-plt.show()
+
+
 for index in columns[3:13]:
 	data = pd.read_csv('dataSets/pop_density.csv', usecols=[0,index])
 
@@ -20,7 +19,7 @@ for index in columns[3:13]:
 
 	US_general = data[3]
 	stateDens = data[4:len(data)]
-
+	fig = plt.figure()
 
 
 	states_names=['Washington', 'Wisconsin', 'West Virginia', 'Florida', 'Wyoming', 'New Hampshire', 'New Jersey', 'New Mexico', 'National', 'North Carolina', 'North Dakota', 'Nebraska', 'New York', 'Rhode Island', 'Nevada', 'Guam', 'Colorado', 'California', 'Georgia', 'Connecticut', 'Oklahoma', 'Ohio', 'Kansas', 'South Carolina', 'Kentucky', 'Oregon', 'South Dakota', 'Delaware', 'District of Columbia', 'Hawaii', 'Puerto Rico', 'Texas', 'Louisiana', 'Tennessee', 'Pennsylvania', 'Virginia', 'Virgin Islands', 'Alaska', 'Alabama', 'American Samoa', 'Arkansas', 'Vermont', 'Illinois', 'Indiana', 'Iowa', 'Arizona', 'Idaho', 'Maine', 'Maryland', 'Massachusetts', 'Utah', 'Missouri', 'Minnesota', 'Michigan', 'Montana', 'Northern Mariana Islands', 'Mississippi']
@@ -82,5 +81,5 @@ for index in columns[3:13]:
 	lons=[i[1] for i in NPL]
 	m.scatter(lons,lats,latlon=True,zorder=2,s=1, color="black")
 	print(ind)
-	plt.draw()
+	plt.show()
 	ind += 10
