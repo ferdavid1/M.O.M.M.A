@@ -96,13 +96,9 @@ for index in columns[10:12]:
 		#print(event)
 		for i,l in enumerate(lats):
 			xpt,ypt = m(lons[i],lats[i])
-<<<<<<< HEAD
-			z = float(1357940)
-			rect=Rectangle([float(xpt)-z,float(ypt)-z],width=z,height=z)
-=======
 			z = 1357940
 			rect=Rectangle([xpt-z,ypt-z],width=z,height=z)
->>>>>>> 883473a3dbeae1f9653c2002e07e0a047f7d4ba6
+
 			cont,x=rect.contains(event)
 			ax.add_patch(rect)
 			#print rect
