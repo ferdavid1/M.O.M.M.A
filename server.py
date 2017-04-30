@@ -10,4 +10,5 @@ while True:
   c, addr = s.accept()
   print ('Got connection from',addr)
   c.send('Thank you for connecting')
+  execfile('PiLEDs.py')
   c.close()

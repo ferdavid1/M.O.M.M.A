@@ -1,7 +1,7 @@
 from gpiozero import LED
 import sys
 import time
-state=sys.argv[1]
+state=1
 red=LED(14)
 
 
