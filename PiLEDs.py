@@ -1,4 +1,14 @@
 from gpiozero import LED
-green=LED(2)
+import sys
+import time
+state=sys.argv[1]
 red=LED(14)
-blue=LED(15)
+
+
+
+if state:
+	red.on()
+	time.sleep(.2)
+
+else:
+	red.off()
