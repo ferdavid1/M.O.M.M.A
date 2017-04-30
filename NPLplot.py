@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap, cm
 import pandas as pd
 import re
-from matplotlib.patches import Polygon
+from matplotlib.patches import Polygon,Rectangle
 
 columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
 ind = 80
@@ -84,10 +84,15 @@ for index in columns[10:12]:
 
 	#print(lats, lons)
 	def hover(event):
-		print(ax.get_position())
-		position = ax.get_position()
-		if position.contains(event)[0]:
-			print('you touching a point nigga')
+		#print(ax.get_position())
+		#print(event)
+		for i,l in enumerate(lats):
+			xpt,ypt = m(lons[i],lats[i])
+			rect=Rectangle([xpt-500000,ypt-500000],width=50000,height=500000)
+			cont,x=rect.contains(event)
+			#print rect
+			if cont:
+				print('you touching a point nigga')
 		        #print ("over %s" % point.get_gid())
 
 	fig.canvas.mpl_connect('motion_notify_event', hover) 
