@@ -8,7 +8,10 @@ import re
 from matplotlib.patches import Polygon
 
 columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
-ind = 0
+ind = 10
+fig = plt.figure()
+plt.ion()
+plt.show()
 for index in columns[3:13]:
 	data = pd.read_csv('dataSets/pop_density.csv', usecols=[0,index])
 
@@ -21,18 +24,19 @@ for index in columns[3:13]:
 
 
 	states_names=['Washington', 'Wisconsin', 'West Virginia', 'Florida', 'Wyoming', 'New Hampshire', 'New Jersey', 'New Mexico', 'National', 'North Carolina', 'North Dakota', 'Nebraska', 'New York', 'Rhode Island', 'Nevada', 'Guam', 'Colorado', 'California', 'Georgia', 'Connecticut', 'Oklahoma', 'Ohio', 'Kansas', 'South Carolina', 'Kentucky', 'Oregon', 'South Dakota', 'Delaware', 'District of Columbia', 'Hawaii', 'Puerto Rico', 'Texas', 'Louisiana', 'Tennessee', 'Pennsylvania', 'Virginia', 'Virgin Islands', 'Alaska', 'Alabama', 'American Samoa', 'Arkansas', 'Vermont', 'Illinois', 'Indiana', 'Iowa', 'Arizona', 'Idaho', 'Maine', 'Maryland', 'Massachusetts', 'Utah', 'Missouri', 'Minnesota', 'Michigan', 'Montana', 'Northern Mariana Islands', 'Mississippi']
-	data = pd.read_csv('dataSets/NPL.csv', usecols=[1,2,3]).get_values()
+	NPL = pd.read_csv('dataSets/NPL.csv', usecols=[1,2,3]).get_values()
 
 	#Sorts EPA Sites data to be only before population density year
-	for a,b in enumerate(data):
+	for a,b in enumerate(NPL):
 		if int(b[0][-2:])>17:
 			b[0]=int(b[0][-2:])
 		else:
 			b[0]=100+int(b[0][-2:])
-		data[a]=b
-	data=[x[1:2] for x in data if x[0]<=ind]
+		NPL[a]=b
+	NPL1=NPL	
+	NPL=[x[1:] for x in NPL if x[0]<=(ind+10)]
 
-	fig = plt.figure()
+	
 
 	blcLat=20.309974
 	blcLon=-128.068124
@@ -74,7 +78,9 @@ for index in columns[3:13]:
 			poly = Polygon(seg, facecolor=cm(stateD[-1]),zorder=0)
 			ax.add_patch(poly)
 
-	lats=[i[0] for i in data]
-	lons=[i[1] for i in data]
+	lats=[i[0] for i in NPL]
+	lons=[i[1] for i in NPL]
 	m.scatter(lons,lats,latlon=True,zorder=2,s=1, color="black")
+	print(ind)
+	plt.draw()
 	ind += 10
