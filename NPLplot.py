@@ -12,9 +12,9 @@ columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
 ind = 80
 
 tts = talkey.Talkey()
-tts.say('You will be presented with a map of US population density, superimposed on a measure of how many environmental risks a state has, as determined by the EPA')
-tts.say('The darkest states have the most environmental risks')
-tts.say('The LED on your Pi will turn on more often in higher population density areas')
+# tts.say('You will be presented with a map of US population density, superimposed on a measure of how many environmental risks a state has, as determined by the EPA')
+# tts.say('The darkest states have the most environmental risks')
+# tts.say('The LED on your Pi will turn on more often in higher population density areas')
 
 for index in columns[10:12]:
 	data = pd.read_csv('dataSets/pop_density.csv', usecols=[0,index])
@@ -92,20 +92,18 @@ for index in columns[10:12]:
 		#print(event)
 		for i,l in enumerate(lats):
 			xpt,ypt = m(lons[i],lats[i])
-			z=10000000
-			rect=Rectangle([xpt-z/2,ypt-z/2],width=z,height=z, facecolor='black',zorder=5)
 			z = 1357940
 			rect=Rectangle([xpt-z,ypt-z],width=z,height=z)
 			cont,x=rect.contains(event)
 			ax.add_patch(rect)
 			#print rect
 			if cont:
-				print('you touching a point nigga')
+				execfile('client.py')
 		        #print ("over %s" % point.get_gid())
 			#rect.remove()
-				return 1
-			else:
-				return 0
+			# 	return 1
+			#else:
+			# 	return 0
 
 	fig.canvas.mpl_connect('motion_notify_event', hover) 
 
