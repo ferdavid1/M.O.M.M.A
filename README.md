@@ -12,6 +12,6 @@ On Computer: python NPLplot.py
 - Click on a point on the map, and the LED will light up.
 - If the point is not a black point, the LED will not light up. 
 
-# Requirements
+## Requirements
 - Python 2
 - mpl_basemap, matplotlib, numpy, pandas, Raspberry Pi 2
