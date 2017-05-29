@@ -10,5 +10,5 @@ On Computer: python NPLplot.py
 
 * Connect LED to output at pin 23.
 
-The program will talk to you, telling you what the data is about. 
-Click on a point on the map, and the LED will light up. If the point is not a black point, the LED will not light up. 
+- Click on a point on the map, and the LED will light up.
+- If the point is not a black point, the LED will not light up. 
