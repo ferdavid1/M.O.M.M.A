@@ -12,7 +12,7 @@ if 1: # picking on a scatter plot (matplotlib.collections.RegularPolyCollection)
 
     fig = figure()
     ax1 = fig.add_subplot(111)
-    col = ax1.scatter(x, y, 100*s, c)
+    col = ax1.scatter(x, y, 100*s, c, picker=True)
     #fig.savefig('pscoll.eps')
     fig.canvas.mpl_connect('pick_event', onpick3)
 

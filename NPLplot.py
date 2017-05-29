@@ -6,16 +6,16 @@ from mpl_toolkits.basemap import Basemap, cm
 import pandas as pd
 import re
 from matplotlib.patches import Polygon,Rectangle,Circle
-#import talkey
+import talkey
 
 columns = [10,11,12,13,14,15,16,17,18,19,20,21,22,32,33]
 ind = 80
 
-#tts = talkey.Talkey()
+tts = talkey.Talkey()
 
-# tts.say('You will be presented with a map of US population density, superimposed on a measure of how many environmental risks a state has, as determined by the EPA')
-# tts.say('The darkest states have the most environmental risks')
-# tts.say('The LED on your Pi will turn on more often in higher population density areas')
+tts.say('You will be presented with a map of US population density, superimposed on a measure of how many environmental risks a state has, as determined by the EPA')
+tts.say('The darkest states have the most environmental risks')
+tts.say('The LED on your Pi will turn on more often in higher population density areas')
 if 1:
 	for index in columns[10:12]:
 		data = pd.read_csv('dataSets/pop_density.csv', usecols=[0,index])
