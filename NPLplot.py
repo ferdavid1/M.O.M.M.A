@@ -88,27 +88,10 @@ if 1:
 		print(ind)
 
 		#print(lats, lons)
-		def hover(event):
-			#print(ax.get_position())
-			#print(event)
-			# for i,l in enumerate(lats):
-			# 	xpt,ypt = m(lons[i],lats[i])
-			# 	z = 1357940
-			# 	# rect=Rectangle([xpt-z,ypt-z],width=z,height=z)
-			# 	rect = Circle([xpt-z,ypt-z], radius=30200)
-			# 	cont,x=rect.contains(event)
-			# 	ax.add_patch(rect)
-				#print rect
-				# if cont:
-				# 	execfile('client.py')
+		def onclick(event):
 			execfile('client.py')
-			        #print ("over %s" % point.get_gid())
-				#rect.remove()
-				# 	return 1
-				#else:
-				# 	return 0
 
-		fig.canvas.mpl_connect('pick_event', hover) 
+		fig.canvas.mpl_connect('pick_event', onclick) 
 
 		plt.show()
 		ind += 10
