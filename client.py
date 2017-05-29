@@ -1,7 +1,7 @@
 import socket
 
 s = socket.socket()
-host = '192.168.2.2'
+host = '172.17.105.102'
 print (host)
 port = 12345
 
